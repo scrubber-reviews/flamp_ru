@@ -62,7 +62,7 @@ class FlampRU:
             new_review.id = review_['id']
             new_review.url = review_['url']
             new_review.text = review_['text']
-            new_review.rating = review_['rating']
+            new_review.rating.average_rating = review_['rating']
             new_review.date = review_['date_created']
             new_review.is_expert = review_['is_expert']
             new_review.likes_score = review_['likes_score']
@@ -79,19 +79,42 @@ class FlampRU:
         return data
 
 
+class Rating:
+    average_rating = ''
+    on_scale = 5
+
+    def get_dict(self):
+        return {
+            'average_rating': self.average_rating,
+            'on_scale': self.on_scale,
+        }
+
+
 class Review:
-    id = None
-    url = ''
-    text = ''
-    rating = 0
-    date = ''
-    likes_score = 0
-    share_count = 0
+    def __init__(self):
+        self.id = None
+        self.url = ''
+        self.text = ''
+        self.rating = Rating()
+        self.date = ''
+        self.likes_score = 0
+        self.share_count = 0
+
+    def get_dict(self):
+        return {
+            'id': self.id,
+            'url': self.url,
+            'text': self.text,
+            'rating': self.rating.get_dict(),
+            'date': self.date,
+            'likes_score': self.likes_score,
+            'share_count': self.share_count,
+        }
 
 
 if __name__ == '__main__':
     prov = FlampRU(70000001020106111)
     reviews = list(prov.get_reviews())
     for review in reviews:
-        print(review.id, review.rating)
+        print(review.get_dict())
     print(len(reviews))
