@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
 """Top-level package for Flamp Ru."""
-from flamp_ru.flamp_ru import FlampRU
+from flamp_ru.flamp_ru import FlampRU, Rating
 
 __author__ = """NMelis"""
 __email__ = 'melis.zhoroev@gmail.com'
-__version__ = '0.1.2'
+__version__ = '0.1.3'
 __name__ = 'Фламп ру'
 __description__ = 'Отзывы о компаниях вашего города'
 __slug_img_link__ = 'https://i.ibb.co/qdNzdNV/image.png'
@@ -16,3 +16,4 @@ Slug это цифры в конце url'а конкретной компани�
 """.format(__slug_img_link__)
 
 provider = FlampRU
+rating = Rating
