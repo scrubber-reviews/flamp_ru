@@ -81,12 +81,14 @@ class FlampRU:
 
 class Rating:
     average_rating = ''
-    on_scale = 5
+    min_scale = 1
+    max_scale = 1
 
     def get_dict(self):
         return {
             'average_rating': self.average_rating,
-            'on_scale': self.on_scale,
+            'min_scale': self.min_scale,
+            'on_scale': self.max_scale,
         }
 
 
